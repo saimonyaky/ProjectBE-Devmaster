@@ -24,6 +24,15 @@
                                             {{ $errors->first('name') }}
                                         </span>
                                     @endif
+                                    <div class="form-group box-body">
+                                        <label for="exampleInputFile">Ảnh danh mục</label>
+                                        <input type="file" id="exampleInputFile" name="image" value="{{ old('image') }}">
+                                    </div>
+                                    @if ($errors->any())
+                                        <span class="text-danger">
+                                            {{ $errors->first('image') }}
+                                        </span>
+                                    @endif
                                     <!-- /.box-body -->
                                     <div class="box-footer">
                                         <button type="submit" class="btn btn-primary">Thêm</button>

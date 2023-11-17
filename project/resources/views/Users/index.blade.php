@@ -1,5 +1,5 @@
 @extends('users.layouts.main')
-<link rel="stylesheet" href="css/trangchu.css">
+<link rel="stylesheet" href="{{ url('') }}/css/trangchu.css">
 @section('content')
     <div class="mid">
         <div class="container p-0">
@@ -58,7 +58,7 @@
                         <div class="col-lg-9 col-12">
                             <div class="row d-flex justify-content-between">
                                 <div class="col-xl-3 col-md-4 col-sm-6 sp">
-                                    <a href="./sanphamchitiet.html">
+                                    <a href="">
                                         <div class="card px-1">
                                             <img src="./img/Cay-kim-tien.png" class="" alt="...">
                                             <div class="card-body">
@@ -69,7 +69,7 @@
                                     </a>
                                 </div>
                                 <div class="col-xl-3 col-md-4 col-sm-6 sp">
-                                    <a href="./sanphamchitiet.html">
+                                    <a href="">
                                         <div class="card px-1">
                                             <img src="./img/Cay-van-nien-thanh.png" class="" alt="...">
                                             <div class="card-body">
@@ -80,7 +80,7 @@
                                     </a>
                                 </div>
                                 <div class="col-xl-3 col-md-4 col-sm-6 sp">
-                                    <a href="./sanphamchitiet.html">
+                                    <a href="">
                                         <div class="card px-1">
                                             <img src="./img/Cay-thuong-xuan.png" class="w-100 h-100" alt="...">
                                             <div class="card-body">
@@ -91,7 +91,7 @@
                                     </a>
                                 </div>
                                 <div class="col-xl-3 col-md-4 col-sm-6 sp">
-                                    <a href="./sanphamchitiet.html">
+                                    <a href="">
                                         <div class="card px-1">
                                             <img src="./img/Cay-canh-dep.png" class="" alt="...">
                                             <div class="card-body">
@@ -111,7 +111,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-3 col-md-4 col-sm-6 sp">
-                                    <a href="./sanphamchitiet.html">
+                                    <a href="">
                                         <div class="card px-1">
                                             <img src="./img/Cay-van-nien-thanh.png" class="" alt="...">
                                             <div class="card-body">
@@ -122,7 +122,7 @@
                                     </a>
                                 </div>
                                 <div class="col-xl-3 col-md-4 col-sm-6 sp">
-                                    <a href="./sanphamchitiet.html">
+                                    <a href="">
                                         <div class="card px-1">
                                             <img src="./img/Cay-thuong-xuan.png" class="" alt="...">
                                             <div class="card-body">
@@ -133,7 +133,7 @@
                                     </a>
                                 </div>
                                 <div class="col-xl-3 col-md-4 col-sm-6 sp">
-                                    <a href="./sanphamchitiet.html">
+                                    <a href="">
                                         <div class="card px-1">
                                             <img src="./img/Cay-canh-dep.png" class="" alt="...">
                                             <div class="card-body">
@@ -148,7 +148,7 @@
                     </div>
                 </div>
             </div>
-            @foreach ($list as $category => $val)
+            @foreach ($list as $val)
                 <div>
                     <!-- img-title -->
                     <div class="img-title">
@@ -157,13 +157,13 @@
                                 <img src="img/display/cay.png" alt="">
                             </div>
                             <div class="bg-green content p-2">
-                                <b>{{ $val['name'] }}</b>
+                                <b>{{ $val['category']->name }}</b>
                             </div>
                             <div class="icon flex-grow-1 bg-gray">
                                 <img src="img/display/icon_section1.png" alt="">
                             </div>
                             <div class="bg-gray justify-content-end p-2">
-                                <a href="{{ route('product') }}">
+                                <a href="{{ route('category', $val['category']->slug) }}">
                                     <span>Xem tất cả</span>
                                     <img src="img/display/arrow-btn.png" alt="">
                                 </a>
@@ -174,18 +174,18 @@
                     <div class="content">
                         <div class="row">
                             <div class="col-3 decor">
-                                <img src="./img/sp-ban-chay.png" alt="" class="w-100 h-100">
+                                <img src="{{ asset($val['category']->image) }}" alt="" class="w-100 h-100">
                             </div>
                             <div class="col-lg-9 col-12">
                                 <div class="row d-flex justify-content-between">
-                                    @foreach ($data as $product => $value)
+                                    @foreach ($val['product'] as $value)
                                         <div class="col-xl-3 col-md-4 col-sm-6 sp">
-                                            <a href="./sanphamchitiet.html">
+                                            <a href="{{ route('product_detail', $value->slug) }}">
                                                 <div class="card px-1">
-                                                    <img src="./img/Cay-kim-tien.png" class="" alt="...">
+                                                    <img src="{{ asset($value->image) }}" class="" alt="...">
                                                     <div class="card-body">
-                                                        <p class="card-text name">{{ $value['name'] }}</p>
-                                                        <p class="card-text price">{{ $value['price'] }}đ</p>
+                                                        <p class="card-text name">{{ $value->name }}</p>
+                                                        <p class="card-text price">{{ $value->price }}đ</p>
                                                     </div>
                                                 </div>
                                             </a>
@@ -205,84 +205,33 @@
             </div>
             <div class="container content">
                 <div class="row d-flex justify-content-between">
-                    <div class="col-xl-3 col-sm-6 col-12 col-6">
-                        <a href="./tintuc.html">
-                            <div class="card">
-                                <img src="./img/tin01.png" class="" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text"><b>Cây Kim Ngân hợp với tuổi nào ?</b></p>
-                                    <p class="card-text">
-                                        <img src="./img/clock.png" alt="">
-                                        <span class="des">
-                                            <i>28/6/2016</i>
-                                        </span>
-                                    </p>
-                                    <p class="card-text des">Cây Kim Ngân là một trong những cây hàng đầu về phong thủy.
-                                        Cây Kim Ngân hay còn gọi là Cây Tiền mang đến cho gia chủ tiền vàng...</p>
-                                </div>
+                    @if ($news)
+                        @foreach ($news as $new)
+                            <div class="col-xl-3 col-sm-6 col-12">
+                                <a href="{{ route('news') }}">
+                                    <div class="card ">
+                                        <img src="{{asset($new->image)}}" class="" alt="...">
+                                        <div class="card-body">
+                                            <p class="card-text"><b>{{$new->title}}</b></p>
+                                            <p class="card-text">
+                                                <img src="img/display/clock.png" alt="">
+                                                <span class="opacity-75">
+                                                    <i>28/6/2016</i>
+                                                </span>
+                                            </p>
+                                            <p class="card-text des">{{$new->content}}</p>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-12">
-                        <a href="./tintuc.html">
-                            <div class="card ">
-                                <img src="./img/tin02.png" class="" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text"><b>Cây Kim Ngân hợp với tuổi nào ?</b></p>
-                                    <p class="card-text">
-                                        <img src="./img/clock.png" alt="">
-                                        <span class="des">
-                                            <i>28/6/2016</i>
-                                        </span>
-                                    </p>
-                                    <p class="card-text des">Cây Kim Ngân là một trong những cây hàng đầu về phong thủy.
-                                        Cây Kim Ngân hay còn gọi là Cây Tiền mang đến cho gia chủ tiền vàng...</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-12">
-                        <a href="./tintuc.html">
-                            <div class="card">
-                                <img src="./img/tin03.png" class="" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text"><b>Cây Kim Ngân hợp với tuổi nào ?</b></p>
-                                    <p class="card-text">
-                                        <img src="./img/clock.png" alt="">
-                                        <span class="des">
-                                            <i>28/6/2016</i>
-                                        </span>
-                                    </p>
-                                    <p class="card-text des">Cây Kim Ngân là một trong những cây hàng đầu về phong thủy.
-                                        Cây Kim Ngân hay còn gọi là Cây Tiền mang đến cho gia chủ tiền vàng...</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-12">
-                        <a href="./tintuc.html">
-                            <div class="card ">
-                                <img src="./img/tin04.png" class="" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text"><b>Cây Kim Ngân hợp với tuổi nào ?</b></p>
-                                    <p class="card-text">
-                                        <img src="./img/clock.png" alt="">
-                                        <span class="des">
-                                            <i>28/6/2016</i>
-                                        </span>
-                                    </p>
-                                    <p class="card-text des">Cây Kim Ngân là một trong những cây hàng đầu về phong thủy.
-                                        Cây Kim Ngân hay còn gọi là Cây Tiền mang đến cho gia chủ tiền vàng...</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                        @endforeach
+                    @endif
                 </div>
                 <div class="more-btn">
-                    <a href="./tintuc.html">
+                    <a href="{{ route('news') }}">
                         <button type="button" class="btn btn-outline-success">
                             <span>Xem thêm</span>
-                            <img src="./img/arrow-btn.png" alt="">
+                            <img src="img/display/arrow-btn.png" alt="">
                         </button>
                     </a>
                 </div>

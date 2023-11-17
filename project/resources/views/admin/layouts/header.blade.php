@@ -13,7 +13,7 @@
           <ul class="nav navbar-nav">
             <li><a href="{{route('category.index')}}">Danh mục</a></li>
             <li><a href="{{route('product.index')}}">Sản phẩm</a></li>
-            <li><a href="{{route('user.index')}}">Tài khoản</a></li>
+            <li><a href="{{route('news.index')}}">Tin tức</a></li>
           </ul>
         </div>
         <!-- /.navbar-collapse -->

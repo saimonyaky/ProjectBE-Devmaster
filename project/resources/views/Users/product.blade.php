@@ -1,5 +1,5 @@
 @extends('users.layouts.main')
-<link rel="stylesheet" href="css/sanpham.css">
+<link rel="stylesheet" href="{{url('')}}/css/sanpham.css">
 @section('content')
 <div class="mid">
     <div class="container p-0">
@@ -16,7 +16,7 @@
                     <div class="direct">
                         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                             <ol class="breadcrumb mb-2">
-                                <li class="breadcrumb-item"><a href="./index.html">Trang chủ</a></li>
+                                <li class="breadcrumb-item"><a href="{{route('index')}}">Trang chủ</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
                             </ol>
                         </nav>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-lg-9 ps-0">
                     <div class="main-content">
-                        @foreach ($list as $category => $val)
+                        @foreach ($list as $val)
                         <div>
                             <!-- img-title -->
                             <div class="img-title">
@@ -45,13 +45,13 @@
                                         <img src="img/display/cay.png" alt="">
                                     </div>
                                     <div class="bg-green content p-2">
-                                        <b>{{ $val['name'] }}</b>
+                                        <b>{{ $val['category']->name }}</b>
                                     </div>
                                     <div class="icon flex-grow-1 bg-gray">
                                         <img src="img/display/icon_section1.png" alt="">
                                     </div>
                                     <div class="bg-gray justify-content-end p-2">                        
-                                        <a href="">
+                                        <a href="{{route('category',$val['category']->slug)}}">
                                             <span>Xem tất cả</span>
                                             <img src="img/display/arrow-btn.png" alt="">
                                         </a>
@@ -60,14 +60,14 @@
                             </div>
                             <!-- content -->
                             <div class="row d-flex justify-content-between py-3">
-                                @foreach($data as $product=>$value)
+                                @foreach($val['product'] as $value)
                                 <div class="col-xl-3 col-md-4 col-sm-6 sp">
-                                    <a href="./sanphamchitiet.html">
+                                    <a href="{{route('product_detail',$value->slug)}}">
                                         <div class="card px-1">
                                             <img src="./img/sen-da-1.png" class="" alt="...">
                                             <div class="card-body">
-                                                <p class="card-text name">{{$value['name']}}</p>
-                                                <p class="card-text price">{{$value['price']}}đ</p>
+                                                <p class="card-text name">{{$value->name}}</p>
+                                                <p class="card-text price">{{$value->price}}đ</p>
                                             </div>
                                         </div>
                                     </a>

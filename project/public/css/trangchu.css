@@ -54,6 +54,11 @@
 }
 .mid .news .content .card .des{
     opacity: 0.8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 }
 .mid .news .more-btn{
     margin-top: 32px;

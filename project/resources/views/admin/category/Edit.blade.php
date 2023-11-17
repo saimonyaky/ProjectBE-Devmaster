@@ -11,7 +11,8 @@
                             </div>
                             <!-- /.box-header -->
                             <!-- form start -->
-                            <form role="form" action="{{ route('product.update', $data->id) }}" method="POST">
+                            <form role="form" action="{{ route('category.update', $data->id) }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="box-body">
@@ -20,6 +21,23 @@
                                         <input type="text" class="form-control" id="exampleInputEmail1"
                                             placeholder="Tên danh mục" name="name" value="{{ $data->name }}">
                                     </div>
+                                    @if ($errors->any())
+                                        <span class="text-danger">
+                                            {{ $errors->first('name') }}
+                                        </span>
+                                    @endif
+                                    <div class="form-group box-body">
+                                        <label for="exampleInputFile">Ảnh danh mục</label>
+                                        <input type="file" id="exampleInputFile" name="new_image">
+                                        @if ($data->image)
+                                            <img src="{{ asset($data->image) }}" alt="">
+                                        @endif
+                                    </div>
+                                    @if ($errors->any())
+                                        <span class="text-danger">
+                                            {{ $errors->first('new_image') }}
+                                        </span>
+                                    @endif
                                     <!-- /.box-body -->
                                     <div class="box-footer">
                                         <button type="submit" class="btn btn-primary">Cập nhật</button>

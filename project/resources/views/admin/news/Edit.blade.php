@@ -19,35 +19,19 @@
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Tên sản phẩm</label>
                                         <input type="text" class="form-control" id="exampleInputEmail1"
-                                            placeholder="Tên sản phẩm" name="name" value="{{ $data->name }}">
+                                            placeholder="Tên sản phẩm" name="title" value="{{ $data->title }}">
                                         @if ($errors->any())
                                             <span class="text-danger">
-                                                {{ $errors->first('name') }}
+                                                {{ $errors->first('title') }}
                                             </span>
                                         @endif
                                     </div>
-                                    <div class="form-group col-sm-4 box-body">
-                                        <label>Loại sản phẩm</label>
-                                        <select class="form-control select2" style="width: 100%;" name='category_id'>
-                                            @foreach ($dataCategory as $key => $val)
-                                                <option value="{{ $val['id'] }}"
-                                                    @if ($val['id'] == $data->category_id) {{ 'selected' }} @endif>
-                                                    {{ $val['name'] }}</option>
-                                            @endforeach
-                                        </select>
-                                        @if ($errors->any())
-                                            <span class="text-danger">
-                                                {{ $errors->first('category_id') }}
-                                            </span>
-                                        @endif
-                                    </div>
-                                    <div class="form-group col-sm-4 box-body">
+                                    <div class="form-group box-body">
                                         <label for="exampleInputEmail1">Giá sản phẩm</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1"
-                                            placeholder="Giá sản phẩm" name="price" value="{{ $data->price }}">
+                                        <textarea type="text" class="form-control" id="exampleInputEmail1" name="content">{{ $data->content }}</textarea>
                                         @if ($errors->any())
                                             <span class="text-danger">
-                                                {{ $errors->first('price') }}
+                                                {{ $errors->first('content') }}
                                             </span>
                                         @endif
                                     </div>
@@ -62,7 +46,7 @@
                                 <!-- /.box-body -->
                                 <div class="box-footer">
                                     <button type="submit" class="btn btn-primary">Cập nhật</button>
-                                    <a href="{{ route('product.index') }}" type="button" class="btn btn-default">Quay
+                                    <a href="{{ route('news.index') }}" type="button" class="btn btn-default">Quay
                                         lại</a>
                                 </div>
                             </form>

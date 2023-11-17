@@ -5,25 +5,29 @@ namespace App\Http\Controllers\User;
 use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\User\ShareController;
 
-class HomeController extends Controller
+class HomeController extends ShareController
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
     function index()
     {
-        $list = Category::all()->take(3);
-        $data = Product::all()->take(6);
-        return view('users.index', compact('list', 'data'));
+        $list=[];
+        $ids =[];
+        $category = $this->category;
+        foreach ($category as $key => $categories) {
+            $ids = [$categories->id];
+            $list[$key]['category'] = $categories;
+            $list[$key]['product'] = Product::where('category_id',$ids)->get();
+        }
+        return view('users.index',['list'=>$list]); 
     }
     function introduce()
     {
         return view('users.introduce');
-    }
-    function product()
-    {
-        $list = Category::all();
-        $data = Product::all()->take(4);
-        return view('users.product', compact('list', 'data'));
     }
     function contact()
     {

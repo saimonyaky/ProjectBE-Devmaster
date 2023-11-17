@@ -3,7 +3,7 @@
 @section('content')
     <div class="mid">
         <div class="align-content-center">
-            <a class="nav-link" href="./index.html">
+            <a class="nav-link" href="{{route("index")}}">
                 <img src="img/display/logo.png" class="rounded mx-auto d-block" alt="">
                 <h4 class="text-center">NHÀ VƯỜN VÂN THỦY</h4>
             </a>

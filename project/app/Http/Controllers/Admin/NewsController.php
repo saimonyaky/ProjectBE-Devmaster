@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Category;
+use App\Tiding;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CategoryController extends Controller
+class NewsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    function index(Request $request)
+    public function index(Request $request)
     {
-        $data = Category::where('name','like','%'.$request->search.'%')
+        $data = Tiding::where('title','like','%'.$request->search.'%')
         ->paginate(10);
         // ->appends(['search'=>$request->search]);
-        return view('admin.category.category',compact('data'));
+        return view('admin.news.news',compact('data'));
     }
 
     /**
@@ -28,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        return view('admin.news.create');
     }
 
     /**
@@ -40,26 +40,27 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required|unique:categories'
+            'title'=>'required|unique:tidings'
         ],[
-            'name.required'=>'Tên danh mục không được để trống',
-            'name.unique'=>'Tên danh mục này bị trùng'
+            'title.required'=>'Tiêu đề không được để trống',
+            'title.unique'=>'Tiêu đề này bị trùng'
         ]);
-        $category = new Category();
-        $category->name = $request->name;
-        $category->slug = str_slug($request->name);
+        $news = new Tiding();
+        $news->title = $request->title;
+        $news->slug = str_slug($request->title);
+        $news->content = $request->content;
         if ($request->hasFile('image')) {
             //get file
             $file = $request->file('image');
             //đặt tên
             $filename = time() . '' . $file->getClientOriginalName();
             //đặt đường dẫn
-            $filepath = 'img/dislay/';
+            $filepath = 'img/news/';
             $request->file('image')->move($filepath, $filename);
-            $category->image = $filepath . $filename;
+            $news->image = $filepath . $filename;
         }
-        $category->save();
-        return redirect()->route('category.index')->with('mess','Thêm thành công');
+        $news->save();
+        return redirect()->route('news.index')->with('mess','Thêm thành công');
     }
 
     /**
@@ -70,8 +71,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $data = Category::find($id);
-        return view('admin.category.show',compact('data'));
+        $data = Tiding::find($id);
+        return view('admin.news.show', compact('data'));
     }
 
     /**
@@ -82,8 +83,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $data = Category::find($id);
-        return view('admin.category.edit',compact('data'));
+        $data = Tiding::find($id);
+        return view('admin.news.edit', compact('data'));
     }
 
     /**
@@ -96,29 +97,30 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name'=>'required',
+            'name' => 'required',
             'image' => 'image|mimes:jpg,png,jpeg,gif,svg'
-        ],[
-            'name.required'=>'Tên danh mục không được để trống',
+        ], [
+            'name.required' => 'Tên sản phẩm không được để trống',
             'image.image' => 'Không phải file ảnh',
             'image.mines' => 'File không đúng định dạng'
         ]);
-        $category = Category::findorFail($id);
-        $category->name = $request->input('name');
-        $category->slug = str_slug($request->input('name'));
+        $news = Tiding::findorFail($id);
+        $news->title = $request->input('title');
+        $news->slug = str_slug($request->input('title'));
+        $news->content= $request->content;
         if ($request->hasFile('new_image')) {
-            @unlink(public_path($category->image));
+            @unlink(public_path($news->image));
             //get file
             $file = $request->file('new_image');
             //đặt tên
             $filename = time() . '_' . $file->getClientOriginalName();
             //đặt đường dẫn
-            $filepath = 'img/display/';
+            $filepath = 'img/news/';
             $request->file('new_image')->move($filepath, $filename);
-            $category->image = $filepath . $filename;
+            $news->image = $filepath . $filename;
         }
-        $category->save();
-        return redirect()->route('category.index')->with('mess','Sửa thành công');
+        $news->save();
+        return redirect()->route('news.index')->with('mess', 'Sửa thành công');
     }
 
     /**
@@ -129,9 +131,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::destroy($id);
+        $category = Tiding::destroy($id);
         if($category){
-            return redirect()->route('category.index')->with('mess','Xoá thành công');
+            return redirect()->route('news.index')->with('mess','Xoá thành công');
         }
     }
 }

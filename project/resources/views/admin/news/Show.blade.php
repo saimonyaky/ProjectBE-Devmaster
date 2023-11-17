@@ -7,17 +7,21 @@
                     <div class="col-xs-12">
                         <div class="box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Chi tiết danh mục</h3>
+                                <h3 class="box-title">Thông tin chi tiết</h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tên danh mục</label>
+                                    <label for="exampleInputEmail1">Tiêu đề</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Tên danh mục" name="name" value="{{ $data->name }}" readonly>
+                                        value="{{ $data->title }}" readonly>
+                                </div>
+                                <div class="form-group box-body">
+                                    <label>Nội dung</label>
+                                    <textarea type="text" class="form-control" id="exampleInputEmail1" readonly>{{ $data->content }}</textarea>
                                 </div>
                                 <div class="form-group box-body col-sm-4">
-                                    <label for="exampleInputFile">Ảnh danh mục</label>
+                                    <label for="exampleInputFile">Ảnh sản phẩm</label>
                                     @if ($data->image)
                                     <p>
                                         <img src="{{ asset($data->image) }}" alt="">
@@ -29,8 +33,9 @@
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <a href="{{ route('category.index') }}" type="button" class="btn btn-default">Quay lại</a>
-                                <a href="{{ route('category.edit', $data->id) }}" type="button"
+                                <a href="{{ route('news.index') }}" type="button" class="btn btn-default">Quay
+                                    lại</a>
+                                <a href="{{ route('news.edit', $data->id) }}" type="button"
                                     class="btn btn-warning">Sửa</a>
                             </div>
                         </div>

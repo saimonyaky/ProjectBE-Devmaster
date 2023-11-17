@@ -2,7 +2,7 @@
     <div class="d-flex">
         <div class="logo col-3">
             <a class="nav-link" href="{{ route('index') }}">
-                <img src="img/display/logo.png" alt="">
+                <img src="{{url('')}}/img/display/logo.png" alt="">
             </a>
         </div>
         <div class="col-9">
@@ -35,7 +35,7 @@
                     </li>
                     <li class="nav-item d-flex ps-4">
                         <div class="pe-2">
-                            <img src="img/display/hand1.png" alt="">
+                            <img src="{{url('')}}/img/display/hand1.png" alt="">
                         </div>
                         <div class="doc">
                             <span>CAM KẾT CHÂT LƯỢNG<br>SẢN PHẨM DỊCH VỤ</span>
@@ -43,7 +43,7 @@
                     </li>
                     <li class="nav-item d-flex ps-4">
                         <div class="pe-2 align-items-end">
-                            <img src="img/display/hand2.png" alt="">
+                            <img src="{{url('')}}/img/display/hand2.png" alt="">
                         </div>
                         <div class="doc">
                             <span>VẬN CHUYỂN NỘI THÀNH<br>MIỄN PHÍ</span>
