@@ -36,7 +36,7 @@
                                     <!-- /.box-body -->
                                     <div class="box-footer">
                                         <button type="submit" class="btn btn-primary">Thêm</button>
-                                        <a href="{{ route('product.index') }}" type="button" class="btn btn-default">Quay
+                                        <a href="{{ route('category.index') }}" type="button" class="btn btn-default">Quay
                                             lại</a>
                                     </div>
                                 </div>

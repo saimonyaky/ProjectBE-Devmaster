@@ -21,7 +21,7 @@
                                     <textarea type="text" class="form-control" id="exampleInputEmail1" readonly>{{ $data->content }}</textarea>
                                 </div>
                                 <div class="form-group box-body col-sm-4">
-                                    <label for="exampleInputFile">Ảnh sản phẩm</label>
+                                    <label for="exampleInputFile">Ảnh minh họa</label>
                                     @if ($data->image)
                                     <p>
                                         <img src="{{ asset($data->image) }}" alt="">

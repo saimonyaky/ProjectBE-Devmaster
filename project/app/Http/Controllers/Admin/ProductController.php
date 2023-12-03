@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Product;
+use App\Product_image;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -68,7 +69,25 @@ class ProductController extends Controller
             $request->file('image')->move($filepath, $filename);
             $product->image = $filepath . $filename;
         }
+        $product->info = $request->info;
+        $product->features = $request->features;
+        $product->condition = $request->condition;
         $product->save();
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $value) {
+                $productImg = new Product_image();
+                $productImg->product_id = $product->id;
+                //get file
+                $file = $value;
+                //đặt tên
+                $filename = time() . '' . $file->getClientOriginalName();
+                //đặt đường dẫn
+                $filepath = 'img/products/';
+                $value->move($filepath, $filename);
+                $productImg->image = $filepath . $filename;
+                $productImg->save();
+            }
+        }   
         return redirect()->route('product.index')->with('mess', 'Thêm thành công');
     }
 
@@ -80,7 +99,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $data = Product::find($id);
+        $data = Product::with('product_images')->find($id);
         $dataCategory = Category::find($data->category_id);
         return view('admin.product.show', compact('data', 'dataCategory'));
     }
@@ -94,7 +113,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $dataCategory = Category::all();
-        $data = Product::find($id);
+        $data = Product::with('product_images')->find($id);
         return view('admin.product.edit', compact('data', 'dataCategory'));
     }
 
@@ -135,7 +154,25 @@ class ProductController extends Controller
             $request->file('new_image')->move($filepath, $filename);
             $product->image = $filepath . $filename;
         }
+        $product->info = $request->info;
+        $product->features = $request->features;
+        $product->condition = $request->condition;
         $product->save();
+        if ($request->hasFile('new_images')) {
+            foreach ($request->file('new_images') as $value) {
+                $productImg = new Product_image();
+                $productImg->product_id = $product->id;
+                //get file
+                $file = $value;
+                //đặt tên
+                $filename = time() . '' . $file->getClientOriginalName();
+                //đặt đường dẫn
+                $filepath = 'img/products/';
+                $value->move($filepath, $filename);
+                $productImg->image = $filepath . $filename;
+                $productImg->save();
+            }
+        } 
         return redirect()->route('product.index')->with('mess', 'Sửa thành công');
     }
 

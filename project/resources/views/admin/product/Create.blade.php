@@ -25,35 +25,75 @@
                                             </span>
                                         @endif
                                     </div>
-                                    <div class="form-group col-sm-4 box-body">
-                                        <label>Loại sản phẩm</label>
-                                        <select class="form-control select2" style="width: 100%;" name='category_id'>
-                                            <option @if (empty(old('category_id'))) selected @endif value="">---Chọn
-                                                loại sản phẩm---</option>
-                                            @foreach ($dataCategory as $key => $val)
-                                                <option @if (old('category_id') == $val['id']) selected @endif
-                                                    value="{{ $val['id'] }}">{{ $val['name'] }}</option>
-                                            @endforeach
-                                        </select>
-                                        @if ($errors->any())
-                                            <span class="text-danger">
-                                                {{ $errors->first('category_id') }}
-                                            </span>
-                                        @endif
+                                    <div class="form-group">
+                                        <label>Mô tả</label>
+                                        <textarea type="text" class="form-control" placeholder="Mô tả sản phẩm" name="describe" value="">{{ old('describe') }}</textarea>
                                     </div>
-                                    <div class="form-group col-sm-4 box-body">
-                                        <label for="exampleInputEmail1">Giá sản phẩm</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1"
-                                            placeholder="Giá sản phẩm" name="price" value="{{ old('price') }}">
-                                        @if ($errors->any())
-                                            <span class="text-danger">
-                                                {{ $errors->first('price') }}
-                                            </span>
-                                        @endif
+                                    <div class="form-group row">
+                                        <div class="col-sm-4 ">
+                                            <label>Loại sản phẩm</label>
+                                            <select class="form-control select2" style="width: 100%;" name='category_id'>
+                                                <option @if (empty(old('category_id'))) selected @endif value="">
+                                                    ---Chọn
+                                                    loại sản phẩm---</option>
+                                                @foreach ($dataCategory as $key => $val)
+                                                    <option @if (old('category_id') == $val['id']) selected @endif
+                                                        value="{{ $val['id'] }}">{{ $val['name'] }}</option>
+                                                @endforeach
+                                            </select>
+                                            @if ($errors->any())
+                                                <span class="text-danger">
+                                                    {{ $errors->first('category_id') }}
+                                                </span>
+                                            @endif
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label for="exampleInputEmail1">Giá sản phẩm</label>
+                                            <input type="text" class="form-control" id="exampleInputEmail1"
+                                                placeholder="Giá sản phẩm" name="price" value="{{ old('price') }}">
+                                            @if ($errors->any())
+                                                <span class="text-danger">
+                                                    {{ $errors->first('price') }}
+                                                </span>
+                                            @endif
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label for="exampleInputFile">Ảnh sản phẩm</label>
+                                            <input type="file" id="exampleInputFile" name="image"
+                                                value="{{ old('image') }}">
+                                        </div>
                                     </div>
-                                    <div class="form-group box-body col-sm-4">
-                                        <label for="exampleInputFile">Ảnh sản phẩm</label>
-                                        <input type="file" id="exampleInputFile" name="image" value="{{ old('image') }}">
+                                    <div class="box-body">
+                                        <label>Thông tin khác:</label>
+                                        <textarea type="text" class="form-control" placeholder="Thông tin khác" name="info" value="">{{ old('info') }}</textarea>
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                                <label>Đặc điểm</label>
+                                                <textarea type="text" class="form-control" placeholder="Đặc điểm sản phẩm" name="features" value="">{{ old('features') }}</textarea>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <label>Điều kiện</label>
+                                                <textarea type="text" class="form-control" placeholder="Điều kiện lí tưởng" name="condition" value="">{{ old('condition') }}</textarea>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <label for="exampleInputFile">Hình ảnh liên quan</label>
+                                                <section class="bg-diffrent">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="verify-sub-box">
+                                                                    <div class="file-loading">
+                                                                        <input id="multiplefileupload" type="file"
+                                                                            name="images[]" accept=".jpg,.gif,.png"
+                                                                            multiple>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- /.box-body -->

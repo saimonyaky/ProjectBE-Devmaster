@@ -7,7 +7,7 @@
                     <div class="col-xs-12">
                         <div class="box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Thêm sản phẩm mới</h3>
+                                <h3 class="box-title">Thông tin chi tiết</h3>
                             </div>
                             <!-- /.box-header -->
                             <!-- form start -->
@@ -17,9 +17,9 @@
                                 @method('PUT')
                                 <div class="box-body">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Tên sản phẩm</label>
+                                        <label for="exampleInputEmail1">Tiêu đề</label>
                                         <input type="text" class="form-control" id="exampleInputEmail1"
-                                            placeholder="Tên sản phẩm" name="title" value="{{ $data->title }}">
+                                            placeholder="Tiêu đề" name="title" value="{{ $data->title }}">
                                         @if ($errors->any())
                                             <span class="text-danger">
                                                 {{ $errors->first('title') }}
@@ -27,7 +27,7 @@
                                         @endif
                                     </div>
                                     <div class="form-group box-body">
-                                        <label for="exampleInputEmail1">Giá sản phẩm</label>
+                                        <label for="exampleInputEmail1">Nội dung</label>
                                         <textarea type="text" class="form-control" id="exampleInputEmail1" name="content">{{ $data->content }}</textarea>
                                         @if ($errors->any())
                                             <span class="text-danger">
@@ -36,7 +36,7 @@
                                         @endif
                                     </div>
                                     <div class="form-group box-body col-sm-4">
-                                        <label for="exampleInputFile">Ảnh sản phẩm</label>
+                                        <label for="exampleInputFile">Ảnh minh họa</label>
                                         <input type="file" id="exampleInputFile" name="new_image">
                                         @if ($data->image)
                                             <img src="{{ asset($data->image) }}" alt="">

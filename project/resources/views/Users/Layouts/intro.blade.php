@@ -27,7 +27,7 @@
             </div>
             <div class="search d-flex align-items-center justify-content-between">
                 <ul class="nav ">
-                    <li class="d-flex" role="search">
+                    <li class="d-flex p-0" role="search">
                         <input class="form-control" type="search" placeholder="Tìm kiếm" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">
                             <i class="fa fa-search"></i>

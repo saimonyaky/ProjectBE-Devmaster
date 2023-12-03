@@ -40,6 +40,7 @@ class ProductController extends ShareController
     function product_detail($slug)
     {
         $data = Product::where('slug',$slug)->first();
-        return view('users.product_detail',compact('data'));
+        $product = Product::where('category_id',$data->category_id)->get();
+        return view('users.product_detail',compact('data','product'));
     }
 }

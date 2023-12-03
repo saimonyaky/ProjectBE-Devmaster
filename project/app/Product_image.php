@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Product_image extends Model
 {
     function product()
     {
-        return $this->hasMany('App\Product');
+        $this->belongsTo('App\product');
     }
 }

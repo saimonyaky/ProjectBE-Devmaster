@@ -21,7 +21,7 @@ Route::prefix('admins')->group(function () {
         Route::resource('product', 'Admin\ProductController');
         Route::resource('news', 'Admin\NewsController');
         Route::get('category/delete/{id}', 'Admin\CategoryController@destroy')->name('categoryDestroy');
-        Route::get('product/delete/{id}', 'Admin\CategoryController@destroy')->name('productDestroy');
+        Route::get('product/delete/{id}', 'Admin\ProductController@destroy')->name('productDestroy');
         Route::get('news/delete/{id}', 'Admin\NewsController@destroy')->name('newsDestroy'); 
     });
 });

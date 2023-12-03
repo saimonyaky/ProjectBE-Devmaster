@@ -74,13 +74,17 @@ a{
     }
 }
 @media screen and (max-width: 991.5px) {
-    .top .main-menu .list-item,
+    .top .main_menu .category,
+    .top .main_menu .list_menu .index,
     .mid .banner .list,
     .mid .main .news,
     .mid .content .decor,
-    .bot .content .menu .menu-web,
+    .bot .content .list_menu .menu-web,
     .bot .content .contact .map{
         display: none!important;
+    }
+    .navbar-brand, .top .main_menu .menu{
+        display: block!important;
     }
     .top .intro .search ul li{
         padding: 0!important;
@@ -88,26 +92,17 @@ a{
     .bot .background img{
         height: 100%;
     }
-    .top .main-menu a:not(:first-child) {display: none;}
-    .top .main-menu a.icon {
+    .top .main_menu a.icon {
     float: right;
     display: block;
-  }
-  .top .main-menu.responsive {position: relative;}
-  .top .main-menu.responsive a.icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .top .main-menu.responsive li {
-    float: none;
-    display: block;
-    text-align: left;
   }
 }
 @media screen and (min-width: 991.5px) {
     .top .intro .search input{
         width: 500px;
+    }
+    .top .intro .search ul li{
+        padding-left: 24;
     }
     .mid .banner .list{
         width: 222px;
@@ -179,29 +174,36 @@ a{
 .top .intro .search button{
     border-radius: 0;  
 }
-.top .main-menu{
+.top .main_menu{
     overflow:hidden;
     background-color: #46ad0e;
     margin-bottom: 11px;   
 }
-.top .main-menu b{
+ .top .main_menu b{
     color: white;
     font-size: 14px;
 }
-.top .main-menu .menu a:hover{
+/* .top .main_menu nav a{
+    padding: 0;
+} */
+.top .main_menu a:hover{
     background-color: #ff3f00;
 }
-.top .main-menu .list-item{
+.top .main_menu .list-item{
     background-clip: content-box;
     background-color: #ff3f00;;
 }
-.top .main-menu .list-item .list-btn{
+.top .main_menu .list-item .list-btn{
     border: none;
     background: none;
 }
-.top .main-menu .icon {
+.top .main_menu .list_menu .nav-link, .navbar-brand {
+    padding: 8px 16px;
+}
+/*
+.top .main_menu .icon {
     display: none;
-  }
+  } */
 #top-up {
     font-size: 30px;
     border: 1px solid white;
@@ -281,15 +283,12 @@ a{
     position: relative;
     top: 0;
 }
-.bot .content .menu{
+.bot .content .list_menu{
     background-color: rgba(48, 132, 2, 0.56);
 }
-.bot .content .menu a{  
+.bot .content .list_menu a{  
     font-size: 16px;
     color: white;
-}
-.bot .content .menu a:hover{  
-    color: #ff3f00;
 }
 .bot .content .contact{
     padding-top: 41px;

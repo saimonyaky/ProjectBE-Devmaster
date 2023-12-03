@@ -11,30 +11,62 @@
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
+                                <div class="">
+                                    <label for="exampleInputFile">Ảnh sản phẩm</label>
+                                    @if ($data->image)
+                                        <p>
+                                            <img src="{{ asset($data->image) }}" alt="">
+                                        </p>
+                                    @else
+                                        <p>Không có ảnh</p>
+                                    @endif
+                                </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên sản phẩm</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1"
                                         value="{{ $data->name }}" readonly>
                                 </div>
-                                <div class="form-group col-sm-4 box-body">
-                                    <label>Loại sản phẩm</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
-                                        value="{{ $dataCategory->name }}" readonly>
+                                <div class="form-group">
+                                    <label>Mô tả</label>
+                                    <textarea type="text" class="form-control" placeholder="Mô tả sản phẩm" name="describe" value="" readonly>{{ old('describe') }}</textarea>
                                 </div>
-                                <div class="form-group col-sm-4 box-body">
-                                    <label for="exampleInputEmail1">Giá sản phẩm</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" name="price"
-                                        value="{{ $data->price }}" readonly>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label>Loại sản phẩm</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1"
+                                            value="{{ $dataCategory->name }}" readonly>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for="exampleInputEmail1">Giá sản phẩm</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" name="price"
+                                            value="{{ $data->price }}" readonly>
+                                    </div>
                                 </div>
-                                <div class="form-group box-body col-sm-4">
-                                    <label for="exampleInputFile">Ảnh sản phẩm</label>
-                                    @if ($data->image)
-                                    <p>
-                                        <img src="{{ asset($data->image) }}" alt="">
-                                    </p>         
-                                    @else
-                                        <p>Không có ảnh</p>
-                                    @endif
+                                <div class="box-body">
+                                    <label>Thông tin khác:</label>
+                                    <textarea type="text" class="form-control" placeholder="Thông tin khác" name="info" readonly>{{ $data->info }}</textarea>
+                                    <div class="form-group">
+                                        <div class="col-sm-4">
+                                            <label>Đặc điểm</label>
+                                            <textarea type="text" class="form-control" placeholder="Đặc điểm sản phẩm" name="features" readonly>{{ $data->features }}</textarea>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label>Điều kiện</label>
+                                            <textarea type="text" class="form-control" placeholder="Điều kiện lí tưởng" name="condition" readonly>{{ $data->condition }}</textarea>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label for="exampleInputFile">Hình ảnh liên quan</label>
+                                            @if ($data->product_images()->get())
+                                                @foreach ($data->product_images()->get() as $value)
+                                                <p>
+                                                    <img src="{{ asset($value->image) }}" alt="">
+                                                </p>                                                   
+                                                @endforeach
+                                            @else
+                                                <p>Không có ảnh</p>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <!-- /.box-body -->

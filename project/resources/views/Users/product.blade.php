@@ -64,7 +64,7 @@
                                 <div class="col-xl-3 col-md-4 col-sm-6 sp">
                                     <a href="{{route('product_detail',$value->slug)}}">
                                         <div class="card px-1">
-                                            <img src="./img/sen-da-1.png" class="" alt="...">
+                                            <img src="{{asset($value->image)}}" class="" alt="...">
                                             <div class="card-body">
                                                 <p class="card-text name">{{$value->name}}</p>
                                                 <p class="card-text price">{{$value->price}}đ</p>

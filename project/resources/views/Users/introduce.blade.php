@@ -40,13 +40,13 @@
                         <div class="img-title">
                             <div class="d-flex">
                                 <div class="justify-content-start bg-green tree">
-                                    <img src="./img/cay.png" alt="">
+                                    <img src="img/display/cay.png" alt="">
                                 </div>
                                 <div class="bg-green content p-2">
                                     <b>Giới thiệu</b>
                                 </div>
                                 <div class="icon flex-grow-1 bg-gray">
-                                    <img src="./img/icon_section1.png" alt="">
+                                    <img src="img/display/icon_section1.png" alt="">
                                 </div>
                             </div>
                         </div>

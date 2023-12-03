@@ -14,7 +14,7 @@ class ShareController extends Controller
     public function __construct()
     {
         $category = Category::all();
-        $news = Tiding::latest()->limit(4)->get();
+        $news = Tiding::latest()->paginate(4);
         $this->category = $category;
         $this->news = $news;
         view()->share("category", $category);
