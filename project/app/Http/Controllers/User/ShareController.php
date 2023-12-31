@@ -13,7 +13,7 @@ class ShareController extends Controller
     protected $news;
     public function __construct()
     {
-        $category = Category::all();
+        $category = Category::paginate(5);
         $news = Tiding::latest()->paginate(4);
         $this->category = $category;
         $this->news = $news;

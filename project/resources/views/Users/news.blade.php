@@ -16,7 +16,7 @@
                         <div class="direct">
                             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-2">
-                                    <li class="breadcrumb-item"><a href="./index.html">Trang chủ</a></li>
+                                    <li class="breadcrumb-item"><a href="{{route('index')}}">Trang chủ</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Tin tức</li>
                                 </ol>
                             </nav>
@@ -54,7 +54,7 @@
                             <div class="main-content">
                                 @if ($news)
                                     @foreach ($news as $new)
-                                        <a href="./tintuc.html">
+                                        <a href="#">
                                             <div class="card">
                                                 <div class="row g-0 py-4">
                                                     <div class="img col-4">

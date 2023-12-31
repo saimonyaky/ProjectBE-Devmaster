@@ -75,14 +75,10 @@ $(document).ready(function(){
     $(this).addClass('active');
   });
 });
-function mainMenuFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "main-menu") {
-    x.className += " responsive";
-  } else {
-    x.className = "main-menu";
-  }
-}
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+});
 window.onscroll = function() {scrollFunction()};
 var navbar = document.getElementById("myTopnav");
 var sticky = navbar.offsetTop;

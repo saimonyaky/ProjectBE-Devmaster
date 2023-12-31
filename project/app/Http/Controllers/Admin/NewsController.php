@@ -40,10 +40,9 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=>'required|unique:tidings'
+            'title'=>'required'
         ],[
-            'title.required'=>'Tiêu đề không được để trống',
-            'title.unique'=>'Tiêu đề này bị trùng'
+            'title.required'=>'Tiêu đề không được để trống'
         ]);
         $news = new Tiding();
         $news->title = $request->title;
@@ -97,12 +96,9 @@ class NewsController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required',
-            'image' => 'image|mimes:jpg,png,jpeg,gif,svg'
-        ], [
-            'name.required' => 'Tên sản phẩm không được để trống',
-            'image.image' => 'Không phải file ảnh',
-            'image.mines' => 'File không đúng định dạng'
+            'title'=>'required'
+        ],[
+            'title.required'=>'Tiêu đề không được để trống',
         ]);
         $news = Tiding::findorFail($id);
         $news->title = $request->input('title');

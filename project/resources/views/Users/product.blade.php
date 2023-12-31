@@ -42,18 +42,18 @@
                             <div class="img-title">
                                 <div class="d-flex">
                                     <div class="justify-content-start bg-green tree">
-                                        <img src="img/display/cay.png" alt="">
+                                        <img src="{{url('')}}/img/display/cay.png" alt="">
                                     </div>
                                     <div class="bg-green content p-2">
                                         <b>{{ $val['category']->name }}</b>
                                     </div>
                                     <div class="icon flex-grow-1 bg-gray">
-                                        <img src="img/display/icon_section1.png" alt="">
+                                        <img src="{{url('')}}/img/display/icon_section1.png" alt="">
                                     </div>
                                     <div class="bg-gray justify-content-end p-2">                        
                                         <a href="{{route('category',$val['category']->slug)}}">
                                             <span>Xem tất cả</span>
-                                            <img src="img/display/arrow-btn.png" alt="">
+                                            <img src="{{url('')}}/img/display/arrow-btn.png" alt="">
                                         </a>
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@
                                             <img src="{{asset($value->image)}}" class="" alt="...">
                                             <div class="card-body">
                                                 <p class="card-text name">{{$value->name}}</p>
-                                                <p class="card-text price">{{$value->price}}đ</p>
+                                                <p class="card-text price">{{number_format($value->price)}}đ</p>
                                             </div>
                                         </div>
                                     </a>

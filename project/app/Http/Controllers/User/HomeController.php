@@ -17,7 +17,7 @@ class HomeController extends ShareController
     {
         $list=[];
         $ids =[];
-        $category = $this->category;
+        $category = Category::limit(3)->get();
         foreach ($category as $key => $categories) {
             $ids = [$categories->id];
             $list[$key]['category'] = $categories;

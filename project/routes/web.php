@@ -34,4 +34,7 @@ Route::prefix('/')->group(function () {
     Route::get('news','User\HomeController@news')->name('news');
     Route::get('contact','User\HomeController@contact')->name('contact');
     Route::post('send-contact','User\FeedbackController@contact')->name('send_contact');
+    Route::get('order','User\CartController@order')->name('order');
+    Route::post('add-cart/{slug}','User\CartController@addCart')->name('add-cart');
+    Route::get('del-cart/{id}','User\CartController@delCart')->name('del-cart');
 });

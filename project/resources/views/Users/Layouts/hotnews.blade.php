@@ -17,7 +17,7 @@
                                     <p class="card-text">
                                         <small class="text-muted">
                                             <img src="img/display/clock.png" alt="">
-                                            <span><i>28/6/2016</i></span>
+                                            <span><i>{{date_format($new->updated_at,"d/m/Y")}}</i></span>
                                         </small>
                                     </p>
                                 </div>

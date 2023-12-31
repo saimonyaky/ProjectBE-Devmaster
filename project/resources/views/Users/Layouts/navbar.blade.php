@@ -31,7 +31,7 @@
                                     <a class="nav-link" href="{{route('product')}}"><b>SẢN PHẨM</b></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><b>DỊCH VỤ</b></a>
+                                    <a class="nav-link" href="{{route('order')}}"><b>DỊCH VỤ</b></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#"><b>HỖ TRỢ KHÁCH HÀNG</b></a>

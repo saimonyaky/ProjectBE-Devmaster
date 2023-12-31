@@ -52,34 +52,34 @@
                 </div>
             </div>
             <div class="introduce">
-                <div class="d-flex">
+                <div class="row">
                     <!-- slide -->
-                    <div class="col-5">
+                    <div class="col-lg-5 h-100">
                         <section class="slide-ctsp">
-                            @if ($data->product_images()->get())
+                            @if (empty($data->product_images))
                                 <div class="slider-for">
-                                    @foreach ($data->product_images()->get() as $value)
+                                    @foreach ($data->product_images as $value)
                                         <div>
                                             <img src="{{ asset($value->image) }}" alt="">
                                         </div>
                                     @endforeach
                                 </div>
                                 <div class="slider-nav">
-                                    @foreach ($data->product_images()->get() as $key => $value)
-                                        <div class="slide-img @if($key == 0) selected @endif">
+                                    @foreach ($data->product_images as $key => $value)
+                                        <div class="slide-img @if ($key == 0) selected @endif">
                                             <img src="{{ asset($value->image) }}" alt="">
                                         </div>
                                     @endforeach
                                 </div>
                             @else
                                 <p>
-                                    <img src="{{ asset($data->image) }}" alt="">
+                                    <img class="img-fluid w-100" src="{{ asset($data->image) }}" alt="">
                                 </p>
                             @endif
                         </section>
                     </div>
                     <!-- des -->
-                    <div class="col-7">
+                    <div class="col-lg-7">
                         <div class="title">
                             <h4>{{ $data->name }}</h4>
                             <ul>
@@ -94,21 +94,25 @@
                             </ul>
                         </div>
                         <div class="info">
-                            <table>
-                                <tr class="title">
-                                    <td>Giá bán:</td>
-                                    <td>Số lượng:</td>
-                                </tr>
-                                <tr>
-                                    <td class="price pe-4">
-                                        <h3><b>{{ $data->price }} đ</b></h3>
-                                    </td>
-                                    <td class="pe-3"><input type="number" value="1" min="1"></td>
-                                    <td><button type="submit"><i class='fas fa-shopping-cart px-2'></i><b
-                                                class="pe-2">ĐẶT
-                                                HÀNG</b></button></td>
-                                </tr>
-                            </table>
+                            <form action="{{ route('add-cart', $data->slug) }}" method="POST">
+                                @csrf
+                                <table>
+                                    <tr class="title">
+                                        <td>Giá bán:</td>
+                                        <td>Số lượng:</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="price pe-4">
+                                            <h3><b>{{ number_format($data->price) }} đ</b></h3>
+                                        </td>
+                                        <td class="pe-3"><input type="number" value="1" min="1"
+                                                name="quanty"></td>
+                                        <td><button class="btn" type="submit"><i
+                                                    class='fas fa-shopping-cart px-2'></i><b class="pe-2">ĐẶT
+                                                    HÀNG</b></button></td>
+                                    </tr>
+                                </table>
+                            </form>
                         </div>
                         <div class="des">
                             <p><b>MÔ TẢ NGẮN</b></p>
@@ -136,24 +140,25 @@
                         <p class="card-text">{{ $data->info }}</p>
                         <div class="card mb-3">
                             <div class="row g-0">
-                                <div class="col-6">
+                                <div class="col-12 col-lg-6">
                                     <div class="card-body">
                                         <h5 class="card-title"><b>Đặc điểm của {{ $data->name }}</b></h5>
                                         <p class="card-text">{{ $data->features }}</p>
                                     </div>
                                 </div>
-                                <div class="col-6">
-                                    <img src="{{ url('') }}/img/display/ttsp01.png" alt="...">
+                                <div class="col-lg-6">
+                                    <img src="{{ url('') }}/img/display/ttsp01.png" alt="..."
+                                        class="img-fluid">
                                 </div>
                             </div>
                         </div>
                         <div class="card mb-3">
                             <div class="row g-0">
-                                <div class="col-6">
+                                <div class="col-lg-6">
                                     <img src="{{ url('') }}/img/display/ttsp02.png" alt="..."
                                         class="img-fluid rounded-start">
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12 col-lg-6">
                                     <div class="card-body">
                                         <h5 class="card-title"><b>Cách chăm sóc và ý nghĩa của {{ $data->name }}</b>
                                         </h5>

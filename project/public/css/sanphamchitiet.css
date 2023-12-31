@@ -62,13 +62,16 @@ h4{
     border-radius: 5px;
     padding: 5px;
 }
-.mid .introduce .info button{
+.mid .introduce .info .btn{
     max-width: 140px;
     color: white;
     background-color: #46ad0e;
     padding: 5px;
     border-radius: 5px;
     border: none;
+}
+.mid .introduce .info .btn:hover{
+    background-color:#ff3f00;
 }
 .mid .introduce .slide-ctsp{
     height: 100%;

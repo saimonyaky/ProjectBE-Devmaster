@@ -7,7 +7,7 @@
             </a>
         @endforeach
     @endif
-    <a class="list-group-item list-group-item-action" href="{{route('product')}}">
+    <a class="list-group-item list-group-item-action" href="{{route('order')}}">
         <img src="/img/display/icon_mnuL.png" alt="">
         <span class="ps-2">Dịch vụ vật tư</span>
     </a>                        
